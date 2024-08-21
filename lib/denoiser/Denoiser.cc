@@ -10,7 +10,7 @@
 #include <scene_rdl2/render/logging/logging.h>
 
 // This header must be included in exactly one .cc file for the link to succeed
-// #include <optix_function_table_definition.h>
+#include <optix_function_table_definition.h>
 
 namespace moonray {
 namespace denoiser {
