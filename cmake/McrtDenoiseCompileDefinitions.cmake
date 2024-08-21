@@ -27,5 +27,14 @@ function(McrtDenoise_cxx_compile_definitions target)
             GL_GLEXT_PROTOTYPES=1                   # This define makes function symbols to be available as extern declarations.
             TBB_SUPPRESS_DEPRECATED_MESSAGES        # Suppress 'deprecated' messages from TBB
     )
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        target_compile_definitions(${target}
+            PRIVATE
+                BOOST_ALL_DYN_LINK
+                BOOST_ALL_NO_LIB
+                _USE_MATH_DEFINES
+                NOMINMAX
+        )
+    endif()
 endfunction()
 
