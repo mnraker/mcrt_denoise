@@ -31,6 +31,14 @@ function(McrtDenoise_cxx_compile_options target)
                     -O3                         # the default is -O2 for RELWITHDEBINFO
                 >
         )
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        target_compile_options(${target}
+            # TODO: Some if not all of these should probably be PUBLIC
+            PRIVATE
+                /arch:AVX2                      # Specify the name of the target architecture
+                /Zc:__cplusplus                 # Make sure the preprocessor is defined to check for C++ version
+                /wd4293                         # '>>': shift count negative or too big, undefined behavior
+        )
     endif()
 endfunction()
 
