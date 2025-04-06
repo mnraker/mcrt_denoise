@@ -24,6 +24,7 @@ option(${PROJECT_NAME_UPPER}_BUILD_TESTING "Whether or not to build the unittest
 # Find dependencies
 # ================================================
 if (MOONRAY_USE_OPTIX)
+    set(CMAKE_THREAD_LIBS_INIT "-lpthread")
     find_package(CUDAToolkit REQUIRED) # built-in
     find_package(OptiX REQUIRED)
 endif()
